@@ -10,45 +10,45 @@ The dashboard helps stakeholders monitor hospital operations, identify trends, i
 
 Hospitals generate large amounts of operational and patient data daily. However, without proper visualization and analytics, it becomes difficult for management to:
 
-- monitor patient trends
+- Monitor patient trends
 
-- track departmental performance
+- Track departmental performance
 
-- analyze treatment costs
+- Analyze treatment costs
 
-- evaluate occupancy and resource utilization
+- Evaluate occupancy and resource utilization
 
-- identify operational inefficiencies
+- Identify operational inefficiencies
 
 This dashboard was created to transform raw healthcare data into actionable insights.
 
 ## Project Objectives
 
--Analyze patient admissions and discharge trends
+- Analyze patient admissions and discharge trends
 
--Monitor hospital department performance
+- Monitor hospital department performance
 
--Track treatment and operational costs
+- Track treatment and operational costs
 
--Evaluate patient demographics and age distribution
+- Evaluate patient demographics and age distribution
 
--Identify busiest departments and peak admission periods
+- Identify busiest departments and peak admission periods
 
--Create an executive-level dashboard for quick decision-making
+- Create an executive-level dashboard for quick decision-making
 
 ## Tools & Technologies Used 
 
-Power BI
+- Power BI
 
-Power Query
+- Power Query
 
-DAX
+- DAX
 
-Microsoft Excel 
+- Microsoft Excel 
 
-Data Modeling
+- Data Modeling
 
-Data Visualization
+- Data Visualization
 
 ## Data Cleaning & Transformation
 
@@ -108,7 +108,7 @@ The dashboard includes the following KPIs:
 - Success Rate
 - Failure Rate
 
-### Features
+### Features:
 
 - Interactive slicers
 - Dynamic KPI cards
@@ -131,7 +131,7 @@ This dashboard page focuses on operational efficiency and patient flow analysis.
 - Analyzed seasonal admission trends
 - Compared successful vs unsuccessful treatment outcomes
 
-This analysis helps hospital administrators optimize staffing, resource allocation, and departmental planning.
+This analysis helps hospital administrators optimize staffing and departmental planning.
 
 ## Department Performance Analysis 
 
@@ -155,57 +155,115 @@ Supports management decisions related to budgeting, infrastructure planning, and
 
 This dashboard page evaluates doctor-level performance metrics and workload distribution.
 
-Visuals Included
-Doctor Workload Analysis
-Doctor Success Rate
-Doctor Summary Table
-Key Insights
-Doctors handling highest patient volumes
-Performance comparison among doctors
-Treatment success patterns
-Workload balancing opportunities
-Business Impact
+### Visuals Included: 
+
+- Doctor Workload Analysis
+- Doctor Success Rate
+- Doctor Summary Table
+
+### Key Insights: 
+
+- Doctors handling highest patient volumes
+- Performance comparison among doctors
+- Treatment success patterns
+- Workload balancing opportunities
 
 This analysis supports performance evaluation, staffing decisions, and healthcare quality improvement.
 
-Patient Demographics Analysis Page
-
-Example:
-
-Patient Demographics Analysis
+## Patient Demographics Analysis
 
 This page analyzes patient demographics and recovery trends.
 
-Visuals Included
-Gender Distribution
-Recovery by Age Group
-Age Distribution
-Key Insights
-Most common patient age groups
-Recovery rate variations by age
-Gender-wise patient distribution
-Demographic treatment patterns
-Business Value
+### Visuals Included: 
+
+- Gender Distribution
+- Recovery by Age Group
+- Age Distribution Of Patiennts 
+
+### Key Insights: 
+
+- Most common patient age groups
+- Recovery rate variations by age
+- Gender-wise patient distribution
+- Demographic treatment patterns
 
 Helps hospitals improve patient targeting, treatment planning, and demographic-specific healthcare services.
 
-Treatment & Outcome Analysis Page
-
-Example:
-
-Treatment & Outcome Analysis
+## Treatment Analysis
 
 This dashboard page evaluates treatment performance and operational trends.
 
-Visuals Included
-Treatment Success Rate
-Weekly Treatment Trends
-Comparative Outcome Analysis
-Key Insights
-Weekly treatment performance fluctuations
-Success rate trends over time
-Treatment efficiency analysis
-Operational treatment patterns
-Business Impact
+### Visuals Included: 
+
+- Treatment Success Rate
+- Weekly Treatment Trends
+- Comparative Outcome Analysis
+
+### Key Insights: 
+
+- Weekly treatment performance fluctuations
+- Success rate trends over time
+- Treatment efficiency analysis
+- Operational treatment patterns
 
 Supports quality monitoring and healthcare performance improvement.
+
+## DAX Measures Used In The Project 
+
+### 1. Avg Length of Stay: 
+
+Avg Length of Stay = AVERAGE(Patients[Length Of Stay]) 
+
+### 2. Department Patient Count:
+
+Department Patient Count = COUNT(Patients[PatientID]) 
+
+### 3. Failure Rate: 
+
+Failure Rate = DIVIDE(
+    CALCULATE(
+        COUNT(Treatments[TreatmentID]),
+        Treatments[Outcome] = "Failure"
+    ),
+    COUNT(Treatments[TreatmentID])
+) 
+
+### 4. Ongoing Treatment Rate: 
+
+Ongoing Treatment Rate = DIVIDE(
+    CALCULATE(
+        COUNT(Treatments[TreatmentID]),
+        Treatments[Outcome] = "Ongoing"
+    ),
+    COUNT(Treatments[TreatmentID])
+) 
+
+### 5. Success Rate:
+
+Success Rate =  DIVIDE(
+    CALCULATE(
+        COUNT(Treatments[TreatmentID]),
+        Treatments[Outcome] = "Success"
+    ),
+    COUNT(Treatments[TreatmentID])
+) 
+
+### 6. Total Cost:
+
+Total Cost = SUM(Treatments[Cost]) 
+
+### 7. Total Patients: 
+
+Total Patients = DISTINCTCOUNT(Patients[PatientID]) 
+
+## Future Improvements
+
+- Add predictive analytics using Python
+- Integrate SQL database connectivity
+- Implement real-time hospital monitoring
+- Add machine learning-based patient risk analysis
+- Improve mobile responsiveness
+
+## Conclusion
+
+This project demonstrates how Power BI can transform raw healthcare data into meaningful business insights. The dashboard enables hospital management to monitor operational performance, improve patient care, and support strategic decision-making through data-driven analysis.
